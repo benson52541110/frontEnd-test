@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 function PriceInput() {
-	const [inputValue, setInputValue] = useState(""); // 用于存储实际输入的值
-	const [formattedValue, setFormattedValue] = useState(""); // 用于存储格式化后的显示值
+	const [inputValue, setInputValue] = useState("0");
+	const [formattedValue, setFormattedValue] = useState("");
 	const [isNull, setIsNull] = useState(false);
 
 	useEffect(() => {
@@ -11,20 +11,17 @@ function PriceInput() {
 
 	function handleInputChange(e) {
 		const rawValue = e.target.value.replace(/,/g, "");
+		if (rawValue === "") {
+			setIsNull(true);
+		} else {
+			setIsNull(false);
+		}
 		setInputValue(rawValue);
 	}
 
-	function handleInputBlur() {
-		setIsNull(true);
-	}
-
 	function addComma(number) {
-		if (!number) return "";
-
 		const parts = number.toString().split(".");
-
 		parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
 		return parts.join(".");
 	}
 
@@ -39,8 +36,7 @@ function PriceInput() {
 					type="text"
 					value={formattedValue}
 					onChange={handleInputChange}
-					onBlur={handleInputBlur}
-					className={`flex-1 border ${isNull ? "border-red-500" : ""}`}
+					className={`px-2 flex-1 border ${isNull ? "border-red-500" : ""}`}
 				/>
 			</div>
 			{isNull && !inputValue && (

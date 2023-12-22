@@ -26,7 +26,7 @@ function AgeGroupSelect({ ageGroup, onAgeGroupChange, isOverlap }) {
 			<h3 className="text-left text-gray-400">年齡</h3>
 			<div className="flex pt-2">
 				<select
-					className={`flex-1 border ${isOverlap ? "border-red-500" : ""}`}
+					className={`px-2 flex-1 border ${isOverlap ? "border-red-500" : ""}`}
 					value={startAge}
 					onChange={handleStartAgeChange}
 				>
@@ -42,7 +42,7 @@ function AgeGroupSelect({ ageGroup, onAgeGroupChange, isOverlap }) {
 				</div>
 
 				<select
-					className={`flex-1 border ${isOverlap ? "border-red-500" : ""}`}
+					className={`px-2 flex-1 border ${isOverlap ? "border-red-500" : ""}`}
 					value={endAge}
 					onChange={handleEndAgeChange}
 				>
